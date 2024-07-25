@@ -7,11 +7,12 @@
     <style>
         body {
             text-align: center;
-            background-color: #ffe6e6;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #ff1493;
             margin: 0;
             padding: 20px;
+            overflow: hidden; /* Evita scrollbars */
+            background-color: #ffe6e6;
         }
         h1 {
             color: #ff69b4;
@@ -57,6 +58,34 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+        .confetti {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            z-index: -1; /* Coloca as imagens de fundo atrás do conteúdo */
+            opacity: 0.8; /* Leve transparência para as imagens de confetes */
+        }
+        #confetti1 {
+            top: 0;
+            left: 0;
+        }
+        #confetti2 {
+            top: 0;
+            right: 0;
+        }
+        #confetti3 {
+            bottom: 0;
+            left: 0;
+        }
+        #confetti4 {
+            bottom: 0;
+            right: 0;
+        }
+        #confetti5 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body>
@@ -68,7 +97,7 @@
         <button onclick="nextQuestion('question2')" disabled>Lógico</button>
     </div>
     <div id="question2" class="question">
-        <p>Última pergunta, quando será lançado o filme da lily bloom?</p>
+        <p>Última pergunta, quando será lançado o filme da Lylu Blomm?</p>
         <button onclick="showResult('wrong')">7 de agosto</button>
         <button onclick="showResult('wrong')">5 de agosto</button>
         <button onclick="showResult('correct')">8 de agosto</button>
@@ -81,6 +110,13 @@
         <img src="https://media.giphy.com/media/CPRW8Qq77eXPq/giphy.gif?cid=790b76110o66pzcinl0eqyyh3bbqj1ha72aiw6gpn1coqnle&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Gif de amor">
         <img src="https://media.giphy.com/media/k7qB1okrV3DwQSwvZl/giphy.gif?cid=ecf05e47iwihqio52rszafif5mf015ihafoa3j29qm7stduh&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Gif de carinho">
     </div>
+
+    <!-- Imagens de Confetes como Fundo -->
+    <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif" id="confetti1" class="confetti" alt="Confete">
+    <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif" id="confetti2" class="confetti" alt="Confete">
+    <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif" id="confetti3" class="confetti" alt="Confete">
+    <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif" id="confetti4" class="confetti" alt="Confete">
+    <img src="https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif" id="confetti5" class="confetti" alt="Confete">
 
     <script>
         function nextQuestion(nextId) {
