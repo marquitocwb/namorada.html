@@ -10,44 +10,76 @@
             background-color: #ffe6e6;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #ff1493;
+            margin: 0;
+            padding: 20px;
         }
         h1 {
             color: #ff69b4;
-            font-size: 3em;
+            font-size: 2.5em;
+            margin-top: 20px;
         }
         p {
-            font-size: 1.5em;
+            font-size: 1.2em;
         }
-        img {
+        .question {
+            display: none;
             margin: 20px;
-            max-width: 90%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .question.active {
+            display: block;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        #result {
+            display: none;
+            font-size: 1.5em;
+            color: #32cd32;
         }
     </style>
 </head>
 <body>
     <h1>Oi, meu amor!</h1>
-    <p>Eu preparei esta surpresa especial para vocêa! 🌹</p>
-    <p>Te amo muito!</p>
-    
-    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Gif de gato apaixonado">
-    <img src="https://media.giphy.com/media/J93sVmfYBtsRi/giphy.gif" alt="Gif de gato apaixonado">
-    <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="Gif de gato apaixonado">
-    <img src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif" alt="Gif de gato apaixonado">
-    <img src="https://media.giphy.com/media/l3vR8BTZ7I8q5eI8U/giphy.gif" alt="Gif de gato apaixonado">
-    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Gif de gato apaixonado">
+    <p>Está pronta para ganhar um PIX?</p>
+    <div id="question1" class="question active">
+        <button onclick="nextQuestion('question2')">Sim</button>
+        <button onclick="nextQuestion('question2')">Com certeza</button>
+        <button onclick="nextQuestion('question2')">Lógico</button>
+    </div>
+    <div id="question2" class="question">
+        <p>Última pergunta, quando será lançado o filme da Lylu Blomm?</p>
+        <button onclick="showResult('wrong')">7 de agosto</button>
+        <button onclick="showResult('wrong')">5 de agosto</button>
+        <button onclick="showResult('correct')">8 de agosto</button>
+    </div>
+    <div id="result"></div>
 
-    <p>Memes apaixonados para você:</p>
-    
-    <img src="https://i.pinimg.com/736x/6c/95/fb/6c95fb894fd9a8ae10d639d6bede6d4a.jpg" alt="Meme apaixonado">
-    <img src="https://i.pinimg.com/736x/0e/80/c3/0e80c3ec596f3917e218c27ee012e4c2.jpg" alt="Meme apaixonado">
-    <img src="https://i.pinimg.com/736x/7f/c2/61/7fc261d39cf5b27de2c6dd5b08b33755.jpg" alt="Meme apaixonado">
-    <img src="https://i.pinimg.com/736x/c8/b1/61/c8b161d68f5d1bdf0e0987b8c5e1b5fa.jpg" alt="Meme apaixonado">
-    <img src="https://i.pinimg.com/736x/8b/47/4b/8b474bbd4317eeb9e2498b235e0f6e55.jpg" alt="Meme apaixonado">
-    <img src="https://i.pinimg.com/736x/34/79/82/347982f5efc755b2df7d42f05abbb020.jpg" alt="Meme apaixonado">
+    <script>
+        function nextQuestion(nextId) {
+            document.querySelector('.question.active').classList.remove('active');
+            document.getElementById(nextId).classList.add('active');
+        }
 
-    <p>Espero que você goste da surpresa! 💖</p>
+        function showResult(answer) {
+            document.querySelector('.question.active').classList.remove('active');
+            const result = document.getElementById('result');
+            if (answer === 'correct') {
+                result.innerHTML = 'Parabéns! Você ganhou o direito de pedir ao seu namorado o valor de 110 reais. Aproveite! 💖';
+            } else {
+                result.innerHTML = 'Infelizmente, essa não é a resposta correta. Mas você ainda é a pessoa mais especial para mim! 💖';
+            }
+            result.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
