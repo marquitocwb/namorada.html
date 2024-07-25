@@ -41,6 +41,10 @@
         button:hover {
             background-color: #ff1493;
         }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
         #result {
             display: none;
             font-size: 1.5em;
@@ -59,9 +63,9 @@
     <h1>Oi, meu amor!</h1>
     <p>Está pronta para ganhar um PIX?</p>
     <div id="question1" class="question active">
-        <button onclick="nextQuestion('question2')">Sim</button>
-        <button onclick="nextQuestion('question2')">Com certeza</button>
-        <button onclick="nextQuestion('question2')">Lógico</button>
+        <button onclick="nextQuestion('question2')" disabled>Sim</button>
+        <button onclick="nextQuestion('question2')" disabled>Com certeza</button>
+        <button onclick="nextQuestion('question2')" disabled>Lógico</button>
     </div>
     <div id="question2" class="question">
         <p>Última pergunta, quando será lançado o filme da Lylu Blomm?</p>
@@ -94,6 +98,14 @@
             }
             result.style.display = 'block';
         }
+
+        // Desabilitar botões por 5 segundos após o carregamento da página
+        window.onload = function() {
+            const buttons = document.querySelectorAll('#question1 button');
+            setTimeout(() => {
+                buttons.forEach(button => button.disabled = false);
+            }, 5000); // 5000 milissegundos = 5 segundos
+        };
     </script>
 </body>
 </html>
